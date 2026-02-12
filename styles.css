@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+#rytm-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 40px);
+    gap: 5px;
+    margin: 30px 0;
+}
+
+.ruta {
+    width: 40px;
+    height: 40px;
+    background-color: #ddd;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+
+.ruta.aktiv {
+    background-color: #4CAF50;
+}
+
+#kontroller {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
