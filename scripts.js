@@ -5,13 +5,13 @@ const config = {
     antalRader: 1,  // För framtida multi-track
 
     // Timing
-    tempo: 60,  // BPM
+    tempo: 120,  // BPM
     get intervall() { return 60000 / this.tempo / 4; }, // ms mellan 16-delar
 
     // Ljud
     frekvens: 800,  // Hz
     volym: 0.3,     // 0-1
-    tonLangd: 0.02,  // sekunder
+    tonLangd: 0.05,  // sekunder
 
     // Utseende
     rutStorlek: 40,  // pixels
@@ -104,7 +104,7 @@ document.getElementById('rensa').addEventListener('click', function () {
 
 // Tempo slider
 const tempoSlider = document.getElementById('tempo-slider');
-const tempoVärde = document.getElementById('tempo-värde');
+const tempoVärde = document.getElementById('tempo-varde');
 
 tempoSlider.addEventListener('input', function () {
     config.tempo = parseInt(this.value);
