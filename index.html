@@ -22,8 +22,13 @@
                 </div>
 
                 <div class="kontroll-grupp">
-                    <label for="volym-slider">Volym: <span id="volym-värde">30</span>%</label>
+                    <label for="volym-slider">Volym diskant: <span id="volym-värde">30</span>%</label>
                     <input type="range" id="volym-slider" min="0" max="100" value="30">
+                </div>
+
+                <div class="kontroll-grupp" id="volym-track2-grupp" style="display: none;">
+                    <label for="volym-track2-slider">Volym bas: <span id="volym-track2-värde">30</span>%</label>
+                    <input type="range" id="volym-track2-slider" min="0" max="100" value="30">
                 </div>
 
                 <div class="kontroll-grupp">
@@ -60,9 +65,8 @@
             <div class="inställnings-grupp">
                 <label for="antal-tracks">Antal tracks:</label>
                 <select id="antal-tracks">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="4">4</option>
+                    <option value="1">1 (Diskant)</option>
+                    <option value="2">2 (Diskant + Bas)</option>
                 </select>
             </div>
 
