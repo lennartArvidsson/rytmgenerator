@@ -1,11 +1,40 @@
+// ============ INSTÄLLNINGAR ============
+const config = {
+    // Grid
+    antalRutor: 16,
+    antalRader: 1,  // För framtida multi-track
+
+    // Timing
+    tempo: 60,  // BPM
+    get intervall() { return 60000 / this.tempo / 4; }, // ms mellan 16-delar
+
+    // Ljud
+    frekvens: 800,  // Hz
+    volym: 0.3,     // 0-1
+    tonLangd: 0.02,  // sekunder
+
+    // Utseende
+    rutStorlek: 40,  // pixels
+    gap: 5,         // pixels mellan rutor
+
+    // Färger
+    farger: {
+        inaktiv: '#bbb',
+        inaktivSpelar: '#e0e0e0',
+        aktiv: '#4CAF50',
+        aktivSpelar: '#8FD694'
+    }
+};
+// =======================================
+
 // Skapa gridrutorna
 const grid = document.getElementById('rytm-grid');
-const antalRutor = 16;
+const antalRutor = config.antalRutor;
 const rutor = [];
 let spelareInterval = null;
 let nuvarandeRuta = 0;
 
-// Generera 16 rutor
+// Generera rutor
 for (let i = 0; i < antalRutor; i++) {
     const ruta = document.createElement('div');
     ruta.className = 'ruta';
@@ -29,11 +58,11 @@ function spelaLjud() {
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
 
-    oscillator.frequency.value = 800; // Hz
-    gainNode.gain.value = 0.3;
+    oscillator.frequency.value = config.frekvens;
+    gainNode.gain.value = config.volym;
 
     oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.1);
+    oscillator.stop(audioContext.currentTime + config.tonLangd);
 }
 
 // Uppspelningsloop
@@ -56,7 +85,7 @@ function spelaSteg() {
 // Knappfunktioner
 document.getElementById('spela').addEventListener('click', function () {
     if (spelareInterval === null) {
-        spelareInterval = setInterval(spelaSteg, 300); // 300ms mellan slag
+        spelareInterval = setInterval(spelaSteg, config.intervall);
     }
 });
 
@@ -71,4 +100,19 @@ document.getElementById('stopp').addEventListener('click', function () {
 
 document.getElementById('rensa').addEventListener('click', function () {
     rutor.forEach(ruta => ruta.classList.remove('aktiv'));
+});
+
+// Tempo slider
+const tempoSlider = document.getElementById('tempo-slider');
+const tempoVärde = document.getElementById('tempo-värde');
+
+tempoSlider.addEventListener('input', function () {
+    config.tempo = parseInt(this.value);
+    tempoVärde.textContent = config.tempo;
+
+    // Om spelaren är igång, starta om med nytt tempo
+    if (spelareInterval !== null) {
+        clearInterval(spelareInterval);
+        spelareInterval = setInterval(spelaSteg, config.intervall);
+    }
 });

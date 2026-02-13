@@ -15,13 +15,25 @@ body {
 .ruta {
     width: 40px;
     height: 40px;
-    background-color: #ddd;
+    background-color: #bbb;
+    /* Lite mörkare grå som default */
     border: 1px solid #999;
     cursor: pointer;
 }
 
+.ruta.spelar {
+    background-color: #e0e0e0;
+    /* Ljusare grå när den spelas */
+}
+
 .ruta.aktiv {
     background-color: #4CAF50;
+    /* Grön när aktiv */
+}
+
+.ruta.aktiv.spelar {
+    background-color: #8FD694;
+    /* Ljusare grön när aktiv OCH spelas */
 }
 
 #kontroller {
@@ -33,4 +45,17 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+}
+
+#inställningar {
+    margin-bottom: 20px;
+}
+
+#tempo-slider {
+    width: 300px;
+    margin-left: 10px;
+}
+
+label {
+    font-size: 16px;
 }
