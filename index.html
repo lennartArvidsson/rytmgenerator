@@ -9,21 +9,77 @@
 </head>
 
 <body>
-    <h1>- Rytmgenerator -</h1>
+    <h1>Rytmgenerator</h1>
 
-    <div id="installningar">
-        <label for="tempo-slider">Tempo: <span id="tempo-varde">120</span> BPM</label>
-        <input type="range" id="tempo-slider" min="40" max="200" value="120">
-    </div>
+    <div id="container">
+        <!-- ARBETSYTA -->
+        <main>
+            <!-- Snabba kontroller -->
+            <div id="arbets-kontroller">
+                <div class="kontroll-grupp">
+                    <label for="tempo-slider">Tempo: <span id="tempo-värde">120</span> BPM</label>
+                    <input type="range" id="tempo-slider" min="40" max="200" value="120">
+                </div>
 
-    <div id="rytm-grid">
-        <!-- Här kommer våra rutorna -->
-    </div>
+                <div class="kontroll-grupp">
+                    <label for="volym-slider">Volym: <span id="volym-värde">30</span>%</label>
+                    <input type="range" id="volym-slider" min="0" max="100" value="30">
+                </div>
 
-    <div id="kontroller">
-        <button id="spela">Spela</button>
-        <button id="stopp">Stopp</button>
-        <button id="rensa">Rensa</button>
+                <div class="kontroll-grupp">
+                    <label for="tonlangd-slider">Pulstid: <span id="tonlangd-värde">100</span>ms</label>
+                    <input type="range" id="tonlangd-slider" min="50" max="500" value="100" step="10">
+                </div>
+            </div>
+
+            <!-- Rytmgrid -->
+            <div id="rytm-grid"></div>
+
+            <!-- Spelknappar -->
+            <div id="kontroller">
+                <button id="spela">Spela</button>
+                <button id="stopp">Stopp</button>
+                <button id="rensa">Rensa</button>
+            </div>
+        </main>
+
+        <!-- INSTÄLLNINGAR ASIDE -->
+        <aside>
+            <h2>Projektinställningar</h2>
+
+            <div class="inställnings-grupp">
+                <label for="taktart">Taktart:</label>
+                <select id="taktart">
+                    <option value="4/4">4/4</option>
+                    <option value="3/4">3/4</option>
+                    <option value="6/8">6/8</option>
+                    <option value="2/2">2/2</option>
+                </select>
+            </div>
+
+            <div class="inställnings-grupp">
+                <label for="antal-tracks">Antal tracks:</label>
+                <select id="antal-tracks">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div class="inställnings-grupp">
+                <label for="minsta-enhet">Minsta enhet:</label>
+                <select id="minsta-enhet">
+                    <option value="4">1/4-delar (4 per takt)</option>
+                    <option value="8">1/8-delar (8 per takt)</option>
+                    <option value="16" selected>1/16-delar (16 per takt)</option>
+                    <option value="32">1/32-delar (32 per takt)</option>
+                </select>
+            </div>
+
+            <div class="inställnings-grupp">
+                <button id="tillämpa">Tillämpa ändringar</button>
+            </div>
+        </aside>
     </div>
 
     <script src="scripts.js"></script>
